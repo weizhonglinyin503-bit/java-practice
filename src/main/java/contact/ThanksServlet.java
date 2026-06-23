@@ -1,0 +1,40 @@
+package contact;
+
+import java.io.IOException;
+import java.util.Arrays;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/contact/thanks")
+public class ThanksServlet extends HttpServlet{
+	
+	@Override
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response)
+	throws ServletException, IOException{
+		
+		request.setCharacterEncoding("UTF-8");
+		
+		String onamae = request.getParameter("onamae");
+		String mail_address = request.getParameter("mail_address");
+		String sex = request.getParameter("sex");
+		String[] cates = request.getParameterValues("cates");
+		String pref = request.getParameter("pref");
+		String message = request.getParameter("message");
+		
+		request.setAttribute("onamae", onamae);
+		request.setAttribute("mail_address", mail_address);
+		request.setAttribute("sex", sex);
+		request.setAttribute("cates", Arrays.toString(cates));
+		request.setAttribute("pref", pref);
+		request.setAttribute("message", message);
+		
+		request.getRequestDispatcher(
+				"/WEB-INF/jsp/thanks.jsp")
+				.forward(request, response);
+	}
+}

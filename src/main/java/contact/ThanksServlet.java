@@ -1,7 +1,6 @@
 package contact;
 
 import java.io.IOException;
-import java.util.Arrays;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -29,7 +28,7 @@ public class ThanksServlet extends HttpServlet{
 		request.setAttribute("onamae", onamae);
 		request.setAttribute("mail_address", mail_address);
 		request.setAttribute("sex", sex);
-		request.setAttribute("cates", Arrays.toString(cates));
+		request.setAttribute("cates", String.join("、", cates));
 		request.setAttribute("pref", pref);
 		request.setAttribute("message", message);
 		

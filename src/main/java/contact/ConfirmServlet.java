@@ -23,9 +23,9 @@ public class ConfirmServlet extends HttpServlet{
 		String sex = request.getParameter("sex");
 		String[] cates = request.getParameterValues("cates");
 		if(cates == null) {
-			request.setAttribute("cates", " ");
+			request.setAttribute("cates", 	new String[0]);
 		}else {
-			request.setAttribute("cates", String.join("、", cates));
+			request.setAttribute("cates", cates);
 		}
 		String pref = request.getParameter("pref");
 		String message = request.getParameter("message");

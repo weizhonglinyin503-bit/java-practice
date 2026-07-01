@@ -18,14 +18,30 @@
 			名前:${onamae}<br>
 			メールアドレス:${mail_address}<br>
 			性別:${sex}<br>
-			お問い合わせ種別:${cates}<br>
+			お問い合わせ種別:
+			<%
+			String[]cates = (String[])request.getAttribute("cates");
+			if(cates != null){
+				for(String cate : cates){
+					out.print(cate + " " );
+				}
+			}
+			%><br>
 			住まいエリア:${pref}<br>
 			メッセージ:<p style="white-space: pre-wrap;">${message}</p>
 			<form action="${pageContext.request.contextPath}/contact/thanks" method="post">
 				<input type="hidden" name="onamae" value="${onamae}">
 				<input type="hidden" name="mail_address" value="${mail_address}">
 				<input type="hidden" name="sex" value="${sex}">
-				<input type="hidden" name="cates" value="${cates}">
+				<%
+				if(cates != null){
+					for(String cate : cates){
+				%>
+					<input type="hidden" name="cates" value="<%= cate %>">
+				<%
+					}
+				}
+				%>
 				<input type="hidden" name="pref" value="${pref}">
 				<input type="hidden" name="message" value="${message}">
 				<input type="submit" value="送信">

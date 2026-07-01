@@ -22,13 +22,18 @@ public class ThanksServlet extends HttpServlet{
 		String mail_address = request.getParameter("mail_address");
 		String sex = request.getParameter("sex");
 		String[] cates = request.getParameterValues("cates");
+		if(cates == null) {
+			request.setAttribute("cates", 	new String[0]);
+		}else {
+			request.setAttribute("cates", cates);
+		}
 		String pref = request.getParameter("pref");
 		String message = request.getParameter("message");
 		
 		request.setAttribute("onamae", onamae);
 		request.setAttribute("mail_address", mail_address);
 		request.setAttribute("sex", sex);
-		request.setAttribute("cates", String.join("、", cates));
+		request.setAttribute("cates", cates);
 		request.setAttribute("pref", pref);
 		request.setAttribute("message", message);
 		

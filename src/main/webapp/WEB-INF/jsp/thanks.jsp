@@ -18,7 +18,15 @@
 			名前:${onamae}<br>
 			メールアドレス:${mail_address}<br>
 			性別:${sex}<br>
-			お問い合わせ種別:${cates}<br>
+			お問い合わせ種別:
+			<%
+			String[]cates = (String[])request.getAttribute("cates");
+			if(cates != null){
+				for(String cate : cates){
+					out.print(cate + " " );
+				}
+			}
+			%><br>
 			住まいエリア:${pref}<br>
 			メッセージ:<p style="white-space: pre-wrap;">${message}</p>
 			<a href="${pageContext.request.contextPath}/contact/input">入力画面へ戻る</a>
